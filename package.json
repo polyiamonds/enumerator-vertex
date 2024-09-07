@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "build": "tsc",
+    "start": "node dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.3",
+    "prisma": "^5.19.1",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1"
+  }
+}
