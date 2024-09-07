@@ -20,7 +20,7 @@ enum SymmetryGroup {
   All
 }
 
-model Polyiamond {
+model PolyiamondVertex {
   n                     Int
   canonized_form        Bytes         @id
   is_processed_for_next Boolean       @default(false)
