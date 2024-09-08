@@ -48,26 +48,42 @@ export function canonizeFree(
     f300Buffer,
   ].sort(Buffer.compare)[0];
   if (bufferEqual(canonizedBuffer, c60Buffer)) {
-    if (bufferEqual(canonizedBuffer, flippedBuffer)) {
+    if (
+      bufferEqual(canonizedBuffer, flippedBuffer) ||
+      bufferEqual(canonizedBuffer, f120Buffer) ||
+      bufferEqual(canonizedBuffer, f240Buffer)
+    ) {
       return [buffer, "All"];
     }
     return [buffer, "Rotation6Fold"];
-  } else if (bufferEqual(canonizedBuffer, f180Buffer)) {
-    if (bufferEqual(canonizedBuffer, flippedBuffer)) {
+  } else if (bufferEqual(canonizedBuffer, c180Buffer)) {
+    if (
+      bufferEqual(canonizedBuffer, flippedBuffer) ||
+      bufferEqual(canonizedBuffer, f120Buffer) ||
+      bufferEqual(canonizedBuffer, f240Buffer)
+    ) {
       return [buffer, "Rotation2FoldMirrorAll"];
     }
     return [buffer, "Rotation2Fold"];
-  } else if (bufferEqual(canonizedBuffer, flippedBuffer)) {
+  } else if (
+    bufferEqual(canonizedBuffer, flippedBuffer) ||
+    bufferEqual(canonizedBuffer, f120Buffer) ||
+    bufferEqual(canonizedBuffer, f240Buffer)
+  ) {
     if (bufferEqual(canonizedBuffer, c120Buffer)) {
       return [buffer, "Rotation3FoldMirror30"];
     }
     return [buffer, "Mirror30"];
   } else if (bufferEqual(canonizedBuffer, c120Buffer)) {
-    if (bufferEqual(canonizedBuffer, f180Buffer)) {
+    if (bufferEqual(canonizedBuffer, c180Buffer)) {
       return [buffer, "Rotation3FoldMirror0"];
     }
     return [buffer, "Rotation3Fold"];
-  } else if (bufferEqual(canonizedBuffer, f180Buffer)) {
+  } else if (
+    bufferEqual(canonizedBuffer, f180Buffer) ||
+    bufferEqual(canonizedBuffer, f300Buffer) ||
+    bufferEqual(canonizedBuffer, f60Buffer)
+  ) {
     return [buffer, "Mirror0"];
   }
   return [buffer, "None"];
